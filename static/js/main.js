@@ -115,8 +115,8 @@ $(document).ready(function() {
         $('.blog-filter .filter-btn').removeClass('active');
         $(this).addClass('active');
         
-        // Filter items
-        const $articles = $('.blog-card-full');
+        // Filter items - works with both old and new class names
+        const $articles = $('.blog-listing-card, .blog-card-full');
         
         if (filter === 'all') {
             $articles.fadeIn(300);
@@ -139,27 +139,55 @@ $(document).ready(function() {
     // ========================================
     // Blog Pagination
     // ========================================
-    const ITEMS_PER_PAGE = 4;
+    const ITEMS_PER_PAGE = 6;
     let currentPage = 1;
     
     function updatePagination() {
-        const $articles = $('.blog-card-full:visible');
-        const totalPages = Math.ceil($articles.length / ITEMS_PER_PAGE);
+        // Get all articles (support both class names)
+        const $allArticles = $('.blog-listing-card, .blog-card-full');
         
-        // Hide all articles
-        $articles.hide();
+        // Get only visible articles (after filtering)
+        const $visibleArticles = $allArticles.filter(function() {
+            return $(this).css('display') !== 'none' || !$(this).data('filtered-out');
+        });
+        
+        // Check current filter
+        const activeFilter = $('.blog-filter .filter-btn.active').data('filter');
+        
+        let $articlesToShow;
+        if (activeFilter && activeFilter !== 'all') {
+            $articlesToShow = $allArticles.filter(function() {
+                return $(this).data('category') === activeFilter;
+            });
+        } else {
+            $articlesToShow = $allArticles;
+        }
+        
+        const totalPages = Math.ceil($articlesToShow.length / ITEMS_PER_PAGE);
+        
+        // Hide all articles first
+        $allArticles.hide();
         
         // Show articles for current page
         const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
         const endIndex = startIndex + ITEMS_PER_PAGE;
         
-        $articles.slice(startIndex, endIndex).fadeIn(300);
+        $articlesToShow.slice(startIndex, endIndex).fadeIn(300);
         
         // Update pagination buttons
         const $pagination = $('#pagination');
+        if ($pagination.length === 0) return;
+        
         const $prevBtn = $pagination.find('.prev');
         const $nextBtn = $pagination.find('.next');
         const $numbers = $pagination.find('.pagination-numbers');
+        
+        // Show/hide pagination based on total pages
+        if (totalPages <= 1) {
+            $pagination.hide();
+        } else {
+            $pagination.show();
+        }
         
         $prevBtn.prop('disabled', currentPage === 1);
         $nextBtn.prop('disabled', currentPage >= totalPages);
@@ -190,8 +218,19 @@ $(document).ready(function() {
     });
     
     $('.pagination .next').on('click', function() {
-        const $articles = $('.blog-card-full:visible');
-        const totalPages = Math.ceil($articles.length / ITEMS_PER_PAGE);
+        const $allArticles = $('.blog-listing-card, .blog-card-full');
+        const activeFilter = $('.blog-filter .filter-btn.active').data('filter');
+        
+        let $articlesToShow;
+        if (activeFilter && activeFilter !== 'all') {
+            $articlesToShow = $allArticles.filter(function() {
+                return $(this).data('category') === activeFilter;
+            });
+        } else {
+            $articlesToShow = $allArticles;
+        }
+        
+        const totalPages = Math.ceil($articlesToShow.length / ITEMS_PER_PAGE);
         
         if (currentPage < totalPages) {
             currentPage++;
