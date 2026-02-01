@@ -144,8 +144,9 @@ p {
 }
 
 .btn-secondary:hover {
-    background-color: #0066CC;
-    color: #FFFFFF;
+	background-color: #fcc207;
+	color: #0066CC;
+	border: 2px solid #fcc207;
 }
 
 .btn-white {
@@ -198,8 +199,8 @@ p {
 }
 
 .logo-icon {
-    width: 36px;
-    height: 36px;
+    width: 13rem;
+    /* height: 36px; */
 }
 
 .nav-toggle {
@@ -1695,6 +1696,11 @@ p {
 
 .footer-brand {
     margin-bottom: 1rem;
+}
+
+.footer-logo img {
+	width: 10rem;
+    background-color: #ffffff;
 }
 
 .footer-logo {
