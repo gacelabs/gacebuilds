@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="google-adsense-account" content="ca-pub-3716182521515143">
+    
+    <!-- SEO Meta Tags -->
+    <title>Contact Us | Get a Free Quote | Gace Builds</title>
+    <meta name="description" content="Contact Gace Builds for a free website consultation and quote. We help Filipino small businesses succeed online with affordable web development services.">
+    <meta name="keywords" content="contact Gace Builds, web development quote Philippines, website consultation, Filipino web developer contact">
+    <meta name="author" content="Gace Builds">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://gacebuilds.com/contact">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Contact Us | Gace Builds">
+    <meta property="og:description" content="Get a free website consultation and quote.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gacebuilds.com/contact">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3716182521515143" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo" data-testid="logo">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#0066CC"/>
+                        <path d="M10 28V12h6c4 0 6 2 6 5s-2 5-6 5h-3v6h-3zm3-9h3c2 0 3-1 3-2s-1-2-3-2h-3v4z" fill="white"/>
+                        <path d="M24 28V12h3v13h7v3h-10z" fill="white"/>
+                    </svg>
+                    <span>Gace Builds</span>
+                </a>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" data-testid="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu" data-testid="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/services" class="nav-link">Services</a></li>
+                    <li><a href="/about" class="nav-link">About</a></li>
+                    <li><a href="/blog" class="nav-link">Blog</a></li>
+                    <li><a href="/contact" class="nav-link nav-cta active">Get a Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 data-testid="contact-title">Get in Touch</h1>
+                <p>Let's discuss how we can help your business succeed online</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                        
+                        <form class="contact-form" id="contactForm" data-testid="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz" data-testid="contact-name">
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="juan@example.com" data-testid="contact-email">
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX" data-testid="contact-phone">
+                                <span class="error-message" id="phoneError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="business">Business Name</label>
+                                <input type="text" id="business" name="business" placeholder="Your Business Name" data-testid="contact-business">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service">Service Interested In *</label>
+                                <select id="service" name="service" required data-testid="contact-service">
+                                    <option value="">Select a service</option>
+                                    <option value="business-website">Business Website</option>
+                                    <option value="landing-page">Landing Page</option>
+                                    <option value="seo">SEO Optimization</option>
+                                    <option value="content">Content Writing</option>
+                                    <option value="maintenance">Website Maintenance</option>
+                                    <option value="training">Training & Support</option>
+                                    <option value="other">Other / Not Sure</option>
+                                </select>
+                                <span class="error-message" id="serviceError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget">Estimated Budget</label>
+                                <select id="budget" name="budget" data-testid="contact-budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-15k">Under ₱15,000</option>
+                                    <option value="15k-30k">₱15,000 - ₱30,000</option>
+                                    <option value="30k-50k">₱30,000 - ₱50,000</option>
+                                    <option value="50k-plus">₱50,000+</option>
+                                    <option value="not-sure">Not sure yet</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="message">Tell Us About Your Project *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="What does your business do? What do you want your website to achieve? Any specific features you need?" data-testid="contact-message"></textarea>
+                                <span class="error-message" id="messageError"></span>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="privacy" required data-testid="contact-privacy">
+                                    <span>I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> and consent to being contacted about my inquiry.</span>
+                                </label>
+                                <span class="error-message" id="privacyError"></span>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full" data-testid="contact-submit">Send Message</button>
+                        </form>
+                        
+                        <!-- Success Message -->
+                        <div class="form-success" id="formSuccess" style="display: none;" data-testid="form-success">
+                            <div class="success-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </div>
+                            <h3>Message Sent Successfully!</h3>
+                            <p>Thank you for reaching out. We'll review your message and get back to you within 24 hours.</p>
+                            <p>In the meantime, feel free to explore our <a href="/blog">blog</a> for helpful tips on growing your business online.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <h3>Other Ways to Reach Us</h3>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:hello@gacebuilds.com">hello@gacebuilds.com</a></p>
+                                    <span>We respond within 24 hours</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Phone / Viber</h4>
+                                    <p><a href="tel:+639123456789">+63 912 345 6789</a></p>
+                                    <span>Mon-Sat, 9AM-6PM</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <div class="info-content">
+                                    <h4>Location</h4>
+                                    <p>Metro Manila, Philippines</p>
+                                    <span>Remote-first, serving clients nationwide</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card social-card">
+                            <h3>Follow Us</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="Facebook" data-testid="social-facebook">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Instagram" data-testid="social-instagram">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                        <circle cx="12" cy="12" r="4"/>
+                                        <circle cx="18" cy="6" r="1"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="social-link" aria-label="LinkedIn" data-testid="social-linkedin">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card faq-quick">
+                            <h3>Quick Answers</h3>
+                            <ul>
+                                <li><strong>How much does a website cost?</strong><br>Starting at ₱15,000 for basic business websites.</li>
+                                <li><strong>How long does it take?</strong><br>Most projects complete in 2-3 weeks.</li>
+                                <li><strong>Do you offer payment plans?</strong><br>Yes, we can split payments for larger projects.</li>
+                            </ul>
+                            <a href="/about#faq" class="link-arrow">See all FAQs →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="8" fill="#0066CC"/>
+                            <path d="M10 28V12h6c4 0 6 2 6 5s-2 5-6 5h-3v6h-3zm3-9h3c2 0 3-1 3-2s-1-2-3-2h-3v4z" fill="white"/>
+                            <path d="M24 28V12h3v13h7v3h-10z" fill="white"/>
+                        </svg>
+                        <span>Gace Builds</span>
+                    </a>
+                    <p>Professional web development for small businesses in the Philippines.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/services#business-websites">Business Websites</a></li>
+                        <li><a href="/services#landing-pages">Landing Pages</a></li>
+                        <li><a href="/services#seo">SEO Optimization</a></li>
+                        <li><a href="/services#content">Content Writing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms & Conditions</a></li>
+                        <li><a href="/disclaimer">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gace Builds. All rights reserved.</p>
+                <p>Proudly serving small businesses across the Philippines.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
