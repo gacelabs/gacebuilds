@@ -1,4 +1,6 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse, FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -12,6 +14,7 @@ from datetime import datetime, timezone
 
 
 ROOT_DIR = Path(__file__).parent
+STATIC_DIR = ROOT_DIR / 'static'
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
@@ -83,6 +86,50 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Mount static files
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+# HTML Page Routes
+@app.get("/", response_class=HTMLResponse)
+async def serve_home():
+    """Serve the homepage"""
+    return FileResponse(STATIC_DIR / 'index.html')
+
+@app.get("/services", response_class=HTMLResponse)
+async def serve_services():
+    """Serve the services page"""
+    return FileResponse(STATIC_DIR / 'services.html')
+
+@app.get("/about", response_class=HTMLResponse)
+async def serve_about():
+    """Serve the about page"""
+    return FileResponse(STATIC_DIR / 'about.html')
+
+@app.get("/blog", response_class=HTMLResponse)
+async def serve_blog():
+    """Serve the blog page"""
+    return FileResponse(STATIC_DIR / 'blog.html')
+
+@app.get("/contact", response_class=HTMLResponse)
+async def serve_contact():
+    """Serve the contact page"""
+    return FileResponse(STATIC_DIR / 'contact.html')
+
+@app.get("/privacy", response_class=HTMLResponse)
+async def serve_privacy():
+    """Serve the privacy policy page"""
+    return FileResponse(STATIC_DIR / 'privacy.html')
+
+@app.get("/terms", response_class=HTMLResponse)
+async def serve_terms():
+    """Serve the terms and conditions page"""
+    return FileResponse(STATIC_DIR / 'terms.html')
+
+@app.get("/disclaimer", response_class=HTMLResponse)
+async def serve_disclaimer():
+    """Serve the disclaimer page"""
+    return FileResponse(STATIC_DIR / 'disclaimer.html')
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
