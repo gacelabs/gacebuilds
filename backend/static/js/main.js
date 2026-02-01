@@ -1,0 +1,433 @@
+/**
+ * Gace Builds - Main JavaScript
+ * jQuery-based functionality for a professional small business website
+ * 
+ * Features:
+ * - Mobile navigation toggle
+ * - Smooth scrolling
+ * - Content filtering (services, blog)
+ * - Pagination
+ * - Form validation
+ * - FAQ accordion
+ */
+
+$(document).ready(function() {
+    'use strict';
+
+    // ========================================
+    // Mobile Navigation Toggle
+    // ========================================
+    const $navToggle = $('#navToggle');
+    const $navMenu = $('#navMenu');
+    
+    $navToggle.on('click', function() {
+        $(this).toggleClass('active');
+        $navMenu.toggleClass('active');
+    });
+    
+    // Close menu when clicking a link
+    $navMenu.find('a').on('click', function() {
+        $navToggle.removeClass('active');
+        $navMenu.removeClass('active');
+    });
+    
+    // Close menu when clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.nav').length) {
+            $navToggle.removeClass('active');
+            $navMenu.removeClass('active');
+        }
+    });
+
+    // ========================================
+    // Smooth Scrolling
+    // ========================================
+    $('a[href^="#"]').on('click', function(e) {
+        const targetId = $(this).attr('href');
+        
+        if (targetId === '#') return;
+        
+        const $target = $(targetId);
+        
+        if ($target.length) {
+            e.preventDefault();
+            
+            const headerHeight = $('#header').outerHeight() || 70;
+            const targetPosition = $target.offset().top - headerHeight - 20;
+            
+            $('html, body').animate({
+                scrollTop: targetPosition
+            }, 600, 'swing');
+        }
+    });
+
+    // ========================================
+    // Header Scroll Effect
+    // ========================================
+    const $header = $('#header');
+    let lastScrollTop = 0;
+    
+    $(window).on('scroll', function() {
+        const scrollTop = $(this).scrollTop();
+        
+        if (scrollTop > 100) {
+            $header.css('box-shadow', '0 2px 20px rgba(0, 0, 0, 0.1)');
+        } else {
+            $header.css('box-shadow', '0 2px 10px rgba(0, 0, 0, 0.08)');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+
+    // ========================================
+    // Content Filtering (Services & Blog)
+    // ========================================
+    // Services filter
+    $('.services-full .filter-btn').on('click', function() {
+        const filter = $(this).data('filter');
+        
+        // Update active button
+        $('.services-full .filter-btn').removeClass('active');
+        $(this).addClass('active');
+        
+        // Filter items
+        const $services = $('.service-detail');
+        
+        if (filter === 'all') {
+            $services.fadeIn(300);
+        } else {
+            $services.each(function() {
+                const category = $(this).data('category');
+                if (category === filter) {
+                    $(this).fadeIn(300);
+                } else {
+                    $(this).fadeOut(300);
+                }
+            });
+        }
+    });
+    
+    // Blog filter
+    $('.blog-filter .filter-btn').on('click', function() {
+        const filter = $(this).data('filter');
+        
+        // Update active button
+        $('.blog-filter .filter-btn').removeClass('active');
+        $(this).addClass('active');
+        
+        // Filter items
+        const $articles = $('.blog-card-full');
+        
+        if (filter === 'all') {
+            $articles.fadeIn(300);
+        } else {
+            $articles.each(function() {
+                const category = $(this).data('category');
+                if (category === filter) {
+                    $(this).fadeIn(300);
+                } else {
+                    $(this).fadeOut(300);
+                }
+            });
+        }
+        
+        // Reset pagination
+        currentPage = 1;
+        updatePagination();
+    });
+
+    // ========================================
+    // Blog Pagination
+    // ========================================
+    const ITEMS_PER_PAGE = 4;
+    let currentPage = 1;
+    
+    function updatePagination() {
+        const $articles = $('.blog-card-full:visible');
+        const totalPages = Math.ceil($articles.length / ITEMS_PER_PAGE);
+        
+        // Hide all articles
+        $articles.hide();
+        
+        // Show articles for current page
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        
+        $articles.slice(startIndex, endIndex).fadeIn(300);
+        
+        // Update pagination buttons
+        const $pagination = $('#pagination');
+        const $prevBtn = $pagination.find('.prev');
+        const $nextBtn = $pagination.find('.next');
+        const $numbers = $pagination.find('.pagination-numbers');
+        
+        $prevBtn.prop('disabled', currentPage === 1);
+        $nextBtn.prop('disabled', currentPage >= totalPages);
+        
+        // Update page numbers
+        $numbers.empty();
+        for (let i = 1; i <= totalPages; i++) {
+            const $btn = $('<button>')
+                .addClass('pagination-num')
+                .text(i)
+                .toggleClass('active', i === currentPage)
+                .on('click', function() {
+                    currentPage = i;
+                    updatePagination();
+                    scrollToSection('.blog-section');
+                });
+            $numbers.append($btn);
+        }
+    }
+    
+    // Pagination button handlers
+    $('.pagination .prev').on('click', function() {
+        if (currentPage > 1) {
+            currentPage--;
+            updatePagination();
+            scrollToSection('.blog-section');
+        }
+    });
+    
+    $('.pagination .next').on('click', function() {
+        const $articles = $('.blog-card-full:visible');
+        const totalPages = Math.ceil($articles.length / ITEMS_PER_PAGE);
+        
+        if (currentPage < totalPages) {
+            currentPage++;
+            updatePagination();
+            scrollToSection('.blog-section');
+        }
+    });
+    
+    // Initialize pagination if on blog page
+    if ($('#blogGrid').length) {
+        updatePagination();
+    }
+    
+    // Helper function to scroll to section
+    function scrollToSection(selector) {
+        const $target = $(selector);
+        if ($target.length) {
+            const headerHeight = $('#header').outerHeight() || 70;
+            $('html, body').animate({
+                scrollTop: $target.offset().top - headerHeight - 20
+            }, 400);
+        }
+    }
+
+    // ========================================
+    // FAQ Accordion
+    // ========================================
+    $('.faq-question').on('click', function() {
+        const $item = $(this).closest('.faq-item');
+        const isActive = $item.hasClass('active');
+        
+        // Close all other items
+        $('.faq-item').removeClass('active');
+        
+        // Toggle current item
+        if (!isActive) {
+            $item.addClass('active');
+        }
+    });
+
+    // ========================================
+    // Contact Form Validation
+    // ========================================
+    const $contactForm = $('#contactForm');
+    
+    if ($contactForm.length) {
+        $contactForm.on('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            $('.form-group').removeClass('error');
+            $('.error-message').hide();
+            
+            let isValid = true;
+            
+            // Validate name
+            const $name = $('#name');
+            if (!$name.val().trim()) {
+                showError($name, 'Please enter your name');
+                isValid = false;
+            } else if ($name.val().trim().length < 2) {
+                showError($name, 'Name must be at least 2 characters');
+                isValid = false;
+            }
+            
+            // Validate email
+            const $email = $('#email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!$email.val().trim()) {
+                showError($email, 'Please enter your email');
+                isValid = false;
+            } else if (!emailRegex.test($email.val())) {
+                showError($email, 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate phone (optional but format check if provided)
+            const $phone = $('#phone');
+            if ($phone.val().trim()) {
+                const phoneRegex = /^[\d\s\+\-\(\)]{10,}$/;
+                if (!phoneRegex.test($phone.val())) {
+                    showError($phone, 'Please enter a valid phone number');
+                    isValid = false;
+                }
+            }
+            
+            // Validate service selection
+            const $service = $('#service');
+            if (!$service.val()) {
+                showError($service, 'Please select a service');
+                isValid = false;
+            }
+            
+            // Validate message
+            const $message = $('#message');
+            if (!$message.val().trim()) {
+                showError($message, 'Please tell us about your project');
+                isValid = false;
+            } else if ($message.val().trim().length < 20) {
+                showError($message, 'Please provide more details (at least 20 characters)');
+                isValid = false;
+            }
+            
+            // Validate privacy checkbox
+            const $privacy = $('input[name="privacy"]');
+            if (!$privacy.is(':checked')) {
+                showError($privacy, 'Please agree to the privacy policy');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Show success message (frontend only as requested)
+                $contactForm.hide();
+                $('#formSuccess').fadeIn(300);
+                
+                // Scroll to success message
+                scrollToSection('.contact-form-wrapper');
+            }
+        });
+        
+        function showError($input, message) {
+            const $group = $input.closest('.form-group');
+            $group.addClass('error');
+            $group.find('.error-message').text(message).show();
+        }
+        
+        // Clear error on input
+        $contactForm.find('input, select, textarea').on('input change', function() {
+            $(this).closest('.form-group').removeClass('error');
+            $(this).closest('.form-group').find('.error-message').hide();
+        });
+    }
+
+    // ========================================
+    // Newsletter Form
+    // ========================================
+    const $newsletterForm = $('#newsletterForm');
+    
+    if ($newsletterForm.length) {
+        $newsletterForm.on('submit', function(e) {
+            e.preventDefault();
+            
+            const $email = $(this).find('input[type="email"]');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test($email.val())) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Show success (frontend only)
+            alert('Thank you for subscribing! We\'ll send you helpful tips for growing your business online.');
+            $email.val('');
+        });
+    }
+
+    // ========================================
+    // Blog Article Expand/Collapse
+    // ========================================
+    $('.blog-card-full h2 a').on('click', function(e) {
+        e.preventDefault();
+        
+        const $card = $(this).closest('.blog-card-full');
+        const isExpanded = $card.hasClass('expanded');
+        
+        if (isExpanded) {
+            $card.removeClass('expanded');
+        } else {
+            // Collapse other expanded cards
+            $('.blog-card-full').removeClass('expanded');
+            $card.addClass('expanded');
+            
+            // Scroll to card
+            const headerHeight = $('#header').outerHeight() || 70;
+            $('html, body').animate({
+                scrollTop: $card.offset().top - headerHeight - 20
+            }, 400);
+        }
+    });
+
+    // ========================================
+    // Lazy Loading Images (Performance)
+    // ========================================
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        $('img[data-src]').each(function() {
+            imageObserver.observe(this);
+        });
+    }
+
+    // ========================================
+    // Service Hash Navigation
+    // ========================================
+    // Handle direct links to service sections
+    if (window.location.hash) {
+        const hash = window.location.hash;
+        const $target = $(hash);
+        
+        if ($target.length) {
+            setTimeout(function() {
+                const headerHeight = $('#header').outerHeight() || 70;
+                $('html, body').animate({
+                    scrollTop: $target.offset().top - headerHeight - 20
+                }, 600);
+            }, 100);
+        }
+    }
+
+    // ========================================
+    // Accessibility: Focus Management
+    // ========================================
+    // Skip to main content functionality
+    $('body').prepend('<a href="#hero" class="sr-only" id="skipLink">Skip to main content</a>');
+    
+    $('#skipLink').on('focus', function() {
+        $(this).removeClass('sr-only');
+    }).on('blur', function() {
+        $(this).addClass('sr-only');
+    });
+
+    // ========================================
+    // Console Welcome Message
+    // ========================================
+    console.log('%cGace Builds', 'font-size: 24px; font-weight: bold; color: #0066CC;');
+    console.log('%cProfessional web development for Filipino small businesses', 'font-size: 14px; color: #666;');
+    console.log('%cContact us: hello@gacebuilds.com', 'font-size: 12px; color: #999;');
+});
