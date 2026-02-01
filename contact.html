@@ -49,7 +49,7 @@
                     <li><a href="/" class="nav-link">Home</a></li>
                     <li><a href="/services" class="nav-link">Services</a></li>
                     <li><a href="/about" class="nav-link">About</a></li>
-                    <li><a href="/blogs" class="nav-link">Blog</a></li>
+                    <li><a href="/blogs" class="nav-link">Blogs</a></li>
                     <li><a href="/contact" class="nav-link nav-cta active">Get a Quote</a></li>
                 </ul>
             </nav>
@@ -75,6 +75,7 @@
                         <p>Fill out the form below and we'll get back to you within 24 hours.</p>
                         
                         <form class="contact-form" id="contactForm" data-testid="contact-form">
+							<input type="text" name="honeypot" style="display:none">
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
                                 <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz" data-testid="contact-name">
@@ -138,6 +139,8 @@
                                 </label>
                                 <span class="error-message" id="privacyError"></span>
                             </div>
+
+							<div class="g-recaptcha" data-sitekey="6LcOM10sAAAAAJEMWOWiiNqsiQkrAmqRnfOZZQPG"></div>
                             
                             <button type="submit" class="btn btn-primary btn-full" data-testid="contact-submit">Send Message</button>
                         </form>
@@ -154,6 +157,19 @@
                             <p>Thank you for reaching out. We'll review your message and get back to you within 24 hours.</p>
                             <p>In the meantime, feel free to explore our <a href="/blogs">blog</a> for helpful tips on growing your business online.</p>
                         </div>
+						<!-- Error Message -->
+						<div class="form-error" id="formError" style="display: none;" data-testid="form-error">
+							<div class="error-icon">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+									<circle cx="12" cy="12" r="10"></circle>
+									<line x1="12" y1="7" x2="12" y2="15"></line>
+									<line x1="12" y1="16" x2="12.01" y2="18"></line>
+								</svg>
+							</div>
+							<h3>Message did not send!</h3>
+							<p class="messageError">An error occurred while submitting the form. Please try again later.</p>
+							<p>In the meantime, feel free to explore our <a href="/blogs">blog</a> for helpful tips on growing your business online.</p>
+						</div>
                     </div>
                     
                     <!-- Contact Info -->
@@ -170,7 +186,7 @@
                                 </div>
                                 <div class="info-content">
                                     <h4>Email</h4>
-                                    <p><a href="mailto:gacebuilds@gmail.com">gacebuilds@gmail.com</a></p>
+                                    <p><a href="mailto:gacebuildsapp@gmail.com">gacebuildsapp@gmail.com</a></p>
                                     <span>We respond within 24 hours</span>
                                 </div>
                             </div>
@@ -260,7 +276,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="/services">Services</a></li>
                         <li><a href="/about">About Us</a></li>
-                        <li><a href="/blogs">Blog</a></li>
+                        <li><a href="/blogs">Blogs</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
@@ -295,8 +311,9 @@
     <script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	</script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
     <script src="/static/js/main.js"></script>
 </body>
 </html>

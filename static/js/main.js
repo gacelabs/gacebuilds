@@ -282,7 +282,10 @@ $(document).ready(function() {
             
             // Clear previous errors
             $('.form-group').removeClass('error');
-            $('.error-message').hide();
+            $('.error-message').stop().hide();
+			$('#formSuccess').stop().hide();
+			$('#formError').stop().hide();
+			$('.g-recaptcha > div').css({border: 'none'});
             
             let isValid = true;
             
@@ -341,13 +344,30 @@ $(document).ready(function() {
                 isValid = false;
             }
             
-            if (isValid) {
-                // Show success message (frontend only as requested)
-                $contactForm.hide();
-                $('#formSuccess').fadeIn(300);
-                
-                // Scroll to success message
-                scrollToSection('.contact-form-wrapper');
+			if (isValid) {
+				const submitBtn = $(e.target).find('button[type="submit"]');
+				submitBtn.prop('disabled', true).text('Sending Message...');
+				submitQuote(e, function () {
+					submitBtn.prop('disabled', false).text('Send Message');
+					// Show success message (frontend only as requested)
+					$('#formSuccess').fadeIn(300, function () {
+						// Scroll to success message
+						scrollToSection('#formSuccess');
+					}).delay(3000).fadeOut(300, function () {
+						scrollToSection('main');
+					});
+					$contactForm.hide().delay(3000).fadeIn(1000);
+				}, function (message) {
+					submitBtn.prop('disabled', false).text('Send Message');
+					$('#formError').find('.messageError').text(message);
+					$('#formError').fadeIn(300, function () {
+						// Scroll to error message
+						scrollToSection('#formError');
+					}).delay(7000).fadeOut(300, function () {
+						scrollToSection('.contact-section');
+						$('.g-recaptcha > div').css({ border: 'none' });
+					});
+				});
             }
         });
         
@@ -362,6 +382,39 @@ $(document).ready(function() {
             $(this).closest('.form-group').removeClass('error');
             $(this).closest('.form-group').find('.error-message').hide();
         });
+
+		async function submitQuote(e, successCallback, errorCallback) {
+			const form = e.target;
+			const formData = new FormData(form);
+			formData.append('apiKey', 'sf_k265gn8mmlkg2f2ji7ghi5m9');
+			const jsonObject = Object.fromEntries(formData.entries());
+			// console.log('Form Data:', Object.fromEntries(formData.entries()));
+
+			try {
+				const response = await fetch('https://api.staticforms.dev/submit', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(jsonObject),
+				});
+
+				const result = await response.json();
+				// console.log('API Response:', result);
+
+				if (result.success || (result.message && result.message.toLowerCase().indexOf('successfully') !== -1)) {
+					successCallback();
+					form.reset();
+				} else {
+					if (result.error && result.error.toLowerCase().indexOf('captcha verification failed') !== -1) {
+						$('.g-recaptcha > div').css({border: '1px solid #DC3545'});
+					}
+					errorCallback('Error: ' + result.error || 'Failed to submit the form. Please try again later.');
+				}
+			} catch (error) {
+				errorCallback('An error occurred while submitting the form. Please try again later.');
+			}
+		}
     }
 
     // ========================================
@@ -468,5 +521,5 @@ $(document).ready(function() {
     // ========================================
     console.log('%cGace Builds', 'font-size: 24px; font-weight: bold; color: #0066CC;');
     console.log('%cProfessional web development for Filipino small businesses', 'font-size: 14px; color: #666;');
-    console.log('%cContact us: hello@gacebuilds.com', 'font-size: 12px; color: #999;');
+    console.log('%cContact us: gacebuildsapp@gmail.com', 'font-size: 12px; color: #999;');
 });

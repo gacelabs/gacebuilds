@@ -1566,6 +1566,34 @@ p {
 	color: #4A4A5E;
 }
 
+.form-error {
+	text-align: center;
+	padding: 2rem;
+	background: #fff0f0;
+	border-radius: 12px;
+}
+
+.error-icon {
+	width: 64px;
+	height: 64px;
+	margin: 0 auto 1rem;
+}
+
+.error-icon svg {
+	width: 100%;
+	height: 100%;
+	color: #a72828;
+}
+
+.form-error h3 {
+	color: #a72828;
+	margin-bottom: 0.75rem;
+}
+
+.form-error p {
+	color: #5e4a4a;
+}
+
 /* ========================================
    Contact Info
    ======================================== */
@@ -2118,6 +2146,11 @@ p {
 	min-height: 90px;
 	max-width: 728px;
 	margin: 0 auto;
+}
+
+button[disabled] {
+	opacity: 0.6;
+	cursor: not-allowed;
 }
 
 /* Responsive ad slots */
