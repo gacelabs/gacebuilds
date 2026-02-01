@@ -605,9 +605,13 @@ p {
 
 .author-avatar img {
 	max-width: none !important;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     object-fit: cover;
     width: 7rem;
+}
+
+.author-avatar img.logo-testi {
+    width: 3rem !important;
 }
 
 .author-avatar {
