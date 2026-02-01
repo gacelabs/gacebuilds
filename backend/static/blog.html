@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Blog | Small Business Tips & Web Development Insights | Gace Builds</title>
+    <meta name="description" content="Helpful articles for Filipino small business owners. Learn about web development, SEO, digital marketing, and growing your business online.">
+    <meta name="keywords" content="small business blog Philippines, web development tips, SEO guide, digital marketing Filipino business">
+    <meta name="author" content="Gace Builds">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://gacebuilds.com/blog">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Blog | Gace Builds">
+    <meta property="og:description" content="Helpful articles for Filipino small business owners.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gacebuilds.com/blog">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo" data-testid="logo">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="#0066CC"/>
+                        <path d="M10 28V12h6c4 0 6 2 6 5s-2 5-6 5h-3v6h-3zm3-9h3c2 0 3-1 3-2s-1-2-3-2h-3v4z" fill="white"/>
+                        <path d="M24 28V12h3v13h7v3h-10z" fill="white"/>
+                    </svg>
+                    <span>Gace Builds</span>
+                </a>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" data-testid="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu" data-testid="nav-menu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/services" class="nav-link">Services</a></li>
+                    <li><a href="/about" class="nav-link">About</a></li>
+                    <li><a href="/blog" class="nav-link active">Blog</a></li>
+                    <li><a href="/contact" class="nav-link nav-cta">Get a Quote</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 data-testid="blog-title">Small Business Insights</h1>
+                <p>Tips, guides, and strategies to grow your business online</p>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog-section">
+            <div class="container">
+                <!-- Blog Filter -->
+                <div class="blog-filter" data-testid="blog-filters">
+                    <button class="filter-btn active" data-filter="all">All Posts</button>
+                    <button class="filter-btn" data-filter="getting-started">Getting Started</button>
+                    <button class="filter-btn" data-filter="marketing">Marketing</button>
+                    <button class="filter-btn" data-filter="seo">SEO</button>
+                    <button class="filter-btn" data-filter="tips">Tips & Tricks</button>
+                </div>
+
+                <!-- Blog Grid -->
+                <div class="blog-full-grid" id="blogGrid" data-testid="blog-grid">
+                    <!-- Article 1 -->
+                    <article class="blog-card-full" data-category="getting-started" id="why-website">
+                        <div class="blog-card-image">
+                            <div class="blog-placeholder" style="background: linear-gradient(135deg, #0066CC 0%, #004C99 100%);"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Getting Started</span>
+                            <h2><a href="#why-website">Why Every Small Business in the Philippines Needs a Website in 2025</a></h2>
+                            <p class="blog-excerpt">In today's digital age, having a website isn't optional anymore – it's essential. Here's why your sari-sari store, repair shop, or service business needs an online presence.</p>
+                            
+                            <div class="blog-article-content">
+                                <h3>The Digital Shift is Here</h3>
+                                <p>Over 80% of Filipinos now search online before making a purchase decision. If your business doesn't show up in that search, you're missing out on potential customers who are actively looking for your products or services.</p>
+                                
+                                <h3>A Website Builds Trust</h3>
+                                <p>When customers find a professional website, they immediately perceive your business as more legitimate and trustworthy. It's your chance to make a great first impression before they ever walk through your door.</p>
+                                
+                                <h3>It Works 24/7</h3>
+                                <p>Unlike a physical store, your website never closes. Customers can learn about your services, check your prices, and even contact you at 3 AM. Your website is your tireless salesperson.</p>
+                                
+                                <h3>Reach Beyond Your Barangay</h3>
+                                <p>A physical store limits you to customers in your immediate area. A website can attract customers from across your city, your province, or even the entire country.</p>
+                                
+                                <h3>It's More Affordable Than Ever</h3>
+                                <p>Professional websites no longer cost hundreds of thousands of pesos. With services like Gace Builds, you can get a quality website starting at ₱15,000 – less than what you might spend on a month's worth of traditional advertising.</p>
+                                
+                                <h3>Your Competitors Already Have One</h3>
+                                <p>Check Google right now for businesses similar to yours in your area. Chances are, at least some of them already have websites. Don't let them capture all the online customers – it's time to level the playing field.</p>
+                                
+                                <div class="blog-cta-box">
+                                    <p><strong>Ready to get started?</strong> Contact us for a free consultation about your business website.</p>
+                                    <a href="/contact" class="btn btn-primary">Get Free Consultation</a>
+                                </div>
+                            </div>
+                            
+                            <div class="blog-meta">
+                                <span class="blog-date">December 15, 2025</span>
+                                <span class="blog-read-time">5 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="blog-card-full" data-category="marketing" id="social-media">
+                        <div class="blog-card-image">
+                            <div class="blog-placeholder" style="background: linear-gradient(135deg, #28A745 0%, #1E7B34 100%);"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Marketing</span>
+                            <h2><a href="#social-media">How to Use Facebook to Drive Traffic to Your Website</a></h2>
+                            <p class="blog-excerpt">Facebook is where most Filipinos spend their time online. Learn how to connect your Facebook presence with your website for maximum impact.</p>
+                            
+                            <div class="blog-article-content">
+                                <h3>Why Facebook + Website is a Powerful Combo</h3>
+                                <p>Over 90 million Filipinos use Facebook. It's the perfect place to find customers. But Facebook posts disappear quickly. Your website is where you can provide detailed information, build credibility, and convert visitors into customers.</p>
+                                
+                                <h3>Step 1: Add Your Website Link Everywhere</h3>
+                                <p>Put your website URL in your Facebook page's About section, your profile, and include it in relevant posts. Make it easy for people to find your site.</p>
+                                
+                                <h3>Step 2: Share Valuable Content</h3>
+                                <p>Don't just post "buy my product!" Share tips, behind-the-scenes content, customer stories, and helpful information. Then link to your website for more details.</p>
+                                
+                                <h3>Step 3: Use Facebook Shop</h3>
+                                <p>If you sell products, set up Facebook Shop and link it to your website. Customers can browse on Facebook and complete purchases on your site.</p>
+                                
+                                <h3>Step 4: Run Targeted Ads</h3>
+                                <p>Even with a small budget (as low as ₱100/day), you can run Facebook ads that drive traffic to specific pages on your website – like a special promotion or new service announcement.</p>
+                                
+                                <h3>Step 5: Engage and Respond</h3>
+                                <p>When people comment or message you, respond quickly and direct them to relevant pages on your website. This builds relationships and drives traffic.</p>
+                                
+                                <div class="blog-cta-box">
+                                    <p><strong>Need help with your digital marketing strategy?</strong> We can help you create a website that works with your social media presence.</p>
+                                    <a href="/contact" class="btn btn-primary">Let's Talk Strategy</a>
+                                </div>
+                            </div>
+                            
+                            <div class="blog-meta">
+                                <span class="blog-date">December 10, 2025</span>
+                                <span class="blog-read-time">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="blog-card-full" data-category="seo" id="local-seo">
+                        <div class="blog-card-image">
+                            <div class="blog-placeholder" style="background: linear-gradient(135deg, #FFC107 0%, #E0A800 100%);"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">SEO</span>
+                            <h2><a href="#local-seo">Getting Found on Google: Local SEO for Philippine Businesses</a></h2>
+                            <p class="blog-excerpt">Learn how to appear in local search results when customers look for services in your area. No technical background required.</p>
+                            
+                            <div class="blog-article-content">
+                                <h3>What is Local SEO?</h3>
+                                <p>Local SEO helps your business appear when people search for things like "bakery near me" or "electrician in Makati." It's about being visible to customers in your area who are actively looking for what you offer.</p>
+                                
+                                <h3>Step 1: Claim Your Google Business Profile</h3>
+                                <p>This is the most important step. Go to business.google.com and claim your business listing. Fill out every field completely – business hours, photos, services, and contact information.</p>
+                                
+                                <h3>Step 2: Get Reviews</h3>
+                                <p>Ask happy customers to leave Google reviews. More positive reviews = higher rankings. Make it easy by sending them a direct link to your review page.</p>
+                                
+                                <h3>Step 3: Use Local Keywords</h3>
+                                <p>On your website, mention your location naturally. Instead of just "web development services," write "web development services in Quezon City" or "serving small businesses across Metro Manila."</p>
+                                
+                                <h3>Step 4: Be Consistent</h3>
+                                <p>Your business name, address, and phone number should be exactly the same everywhere – your website, Facebook page, Google listing, and any online directories.</p>
+                                
+                                <h3>Step 5: Create Local Content</h3>
+                                <p>Write about topics relevant to your local audience. A restaurant might write about "Best Filipino Comfort Food in [Your City]" or a contractor about "Home Renovation Trends in Metro Manila."</p>
+                                
+                                <div class="blog-cta-box">
+                                    <p><strong>Want professional help with SEO?</strong> Our SEO services start at ₱5,000/month.</p>
+                                    <a href="/services#seo" class="btn btn-primary">Learn About SEO Services</a>
+                                </div>
+                            </div>
+                            
+                            <div class="blog-meta">
+                                <span class="blog-date">December 5, 2025</span>
+                                <span class="blog-read-time">7 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="blog-card-full" data-category="tips" id="website-mistakes">
+                        <div class="blog-card-image">
+                            <div class="blog-placeholder" style="background: linear-gradient(135deg, #DC3545 0%, #B02A37 100%);"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Tips & Tricks</span>
+                            <h2><a href="#website-mistakes">5 Common Website Mistakes Filipino Small Businesses Make (And How to Avoid Them)</a></h2>
+                            <p class="blog-excerpt">Don't let these common errors hurt your online presence. Here's what to watch out for and how to fix them.</p>
+                            
+                            <div class="blog-article-content">
+                                <h3>Mistake #1: No Mobile Optimization</h3>
+                                <p>Over 80% of Filipino internet users browse on mobile phones. If your website is hard to read or navigate on a smartphone, you're losing the majority of your potential customers.</p>
+                                <p><strong>Solution:</strong> Always test your website on mobile devices. A responsive design automatically adjusts to any screen size.</p>
+                                
+                                <h3>Mistake #2: Missing Contact Information</h3>
+                                <p>Many business websites bury their contact information or don't include it at all. Customers who can't easily find how to reach you will simply go to a competitor.</p>
+                                <p><strong>Solution:</strong> Put your phone number and email in the header. Have a dedicated Contact page with multiple ways to reach you.</p>
+                                
+                                <h3>Mistake #3: Slow Loading Speed</h3>
+                                <p>Filipino internet can be slow and expensive. If your website takes more than 3 seconds to load, over half of visitors will leave before seeing anything.</p>
+                                <p><strong>Solution:</strong> Optimize images, minimize code, and choose a fast hosting provider. Test your speed at tools like GTmetrix.</p>
+                                
+                                <h3>Mistake #4: Outdated Information</h3>
+                                <p>Nothing says "abandoned business" like a website with last year's promotions or outdated business hours. Customers will question if you're even still operating.</p>
+                                <p><strong>Solution:</strong> Review your website at least monthly. Update hours, prices, and remove expired promotions immediately.</p>
+                                
+                                <h3>Mistake #5: No Clear Call to Action</h3>
+                                <p>Many websites describe services beautifully but never tell visitors what to do next. Don't leave customers guessing.</p>
+                                <p><strong>Solution:</strong> Every page should have a clear next step – "Call Now," "Get a Quote," "Visit Our Store," or "Learn More."</p>
+                                
+                                <div class="blog-cta-box">
+                                    <p><strong>Worried about your website?</strong> Get a free website review and we'll identify any issues holding you back.</p>
+                                    <a href="/contact" class="btn btn-primary">Request Free Review</a>
+                                </div>
+                            </div>
+                            
+                            <div class="blog-meta">
+                                <span class="blog-date">November 28, 2025</span>
+                                <span class="blog-read-time">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="blog-card-full" data-category="getting-started" id="website-cost">
+                        <div class="blog-card-image">
+                            <div class="blog-placeholder" style="background: linear-gradient(135deg, #6F42C1 0%, #5A32A3 100%);"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Getting Started</span>
+                            <h2><a href="#website-cost">How Much Does a Website Really Cost in the Philippines? A Complete Guide</a></h2>
+                            <p class="blog-excerpt">Confused about website pricing? Here's a transparent breakdown of what you should expect to pay and what affects the cost.</p>
+                            
+                            <div class="blog-article-content">
+                                <h3>Understanding Website Costs</h3>
+                                <p>Website pricing in the Philippines varies wildly – from free DIY builders to agency quotes of ₱500,000+. Understanding what drives costs helps you make informed decisions.</p>
+                                
+                                <h3>Option 1: DIY Website Builders (₱0 - ₱5,000/year)</h3>
+                                <p>Platforms like Wix or Squarespace let you build websites yourself. Good for very simple sites, but limited customization and often look generic. Best for personal projects or very tight budgets.</p>
+                                
+                                <h3>Option 2: Freelance Developers (₱8,000 - ₱50,000)</h3>
+                                <p>Individual freelancers offer affordable rates but quality varies greatly. Risk of disappearing after the project. Good for simple sites if you find a reliable developer.</p>
+                                
+                                <h3>Option 3: Small Web Studios (₱15,000 - ₱100,000)</h3>
+                                <p>Companies like Gace Builds specialize in small business websites. Balance of affordability and quality. Usually includes support and maintenance options.</p>
+                                
+                                <h3>Option 4: Full-Service Agencies (₱50,000 - ₱500,000+)</h3>
+                                <p>Large agencies offer comprehensive services but at premium prices. Best for large companies with complex needs and bigger budgets.</p>
+                                
+                                <h3>What Affects the Price?</h3>
+                                <ul>
+                                    <li><strong>Number of pages:</strong> More pages = more work = higher cost</li>
+                                    <li><strong>Custom design vs. templates:</strong> Custom designs cost more but look unique</li>
+                                    <li><strong>Features:</strong> E-commerce, booking systems, and custom functionality add cost</li>
+                                    <li><strong>Content:</strong> Writing content for you costs extra</li>
+                                    <li><strong>Ongoing support:</strong> Maintenance plans are usually monthly fees</li>
+                                </ul>
+                                
+                                <h3>What's the Best Value for Small Businesses?</h3>
+                                <p>For most Filipino small businesses, a professionally-built website in the ₱15,000 - ₱30,000 range offers the best balance of quality, features, and affordability. You get a professional result without the agency markup.</p>
+                                
+                                <div class="blog-cta-box">
+                                    <p><strong>Want to know exactly what your website will cost?</strong> Get a free, no-obligation quote customized to your needs.</p>
+                                    <a href="/contact" class="btn btn-primary">Get Your Free Quote</a>
+                                </div>
+                            </div>
+                            
+                            <div class="blog-meta">
+                                <span class="blog-date">November 20, 2025</span>
+                                <span class="blog-read-time">8 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="blog-card-full" data-category="marketing" id="email-marketing">
+                        <div class="blog-card-image">
+                            <div class="blog-placeholder" style="background: linear-gradient(135deg, #17A2B8 0%, #138496 100%);"></div>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-category">Marketing</span>
+                            <h2><a href="#email-marketing">Email Marketing for Small Businesses: A Beginner's Guide</a></h2>
+                            <p class="blog-excerpt">Email isn't dead – it's one of the most effective marketing channels. Learn how to start collecting and using customer emails.</p>
+                            
+                            <div class="blog-article-content">
+                                <h3>Why Email Marketing Works</h3>
+                                <p>Unlike social media where algorithms control who sees your posts, email goes directly to your customers. Studies show email marketing has an average return of ₱42 for every ₱1 spent.</p>
+                                
+                                <h3>Step 1: Build Your Email List</h3>
+                                <p>Never buy email lists – they don't work and can get you marked as spam. Instead, collect emails from customers who actually want to hear from you.</p>
+                                <ul>
+                                    <li>Add a signup form to your website</li>
+                                    <li>Offer something valuable in exchange (discount, free guide, etc.)</li>
+                                    <li>Ask customers at checkout</li>
+                                    <li>Run Facebook lead ads</li>
+                                </ul>
+                                
+                                <h3>Step 2: Choose an Email Platform</h3>
+                                <p>Free options like Mailchimp (up to 500 subscribers) or Brevo make it easy to send professional emails without technical skills.</p>
+                                
+                                <h3>Step 3: Send Valuable Content</h3>
+                                <p>Don't just send sales pitches. Share tips, news, behind-the-scenes content, and exclusive offers. Aim for 80% value, 20% promotion.</p>
+                                
+                                <h3>Step 4: Be Consistent</h3>
+                                <p>Whether it's weekly or monthly, stick to a schedule. Customers who expect your emails are more likely to open and read them.</p>
+                                
+                                <h3>Step 5: Track and Improve</h3>
+                                <p>Check your open rates and click rates. Test different subject lines and content to see what your audience responds to best.</p>
+                                
+                                <div class="blog-cta-box">
+                                    <p><strong>Need help setting up email marketing?</strong> We can integrate email signup forms into your website.</p>
+                                    <a href="/contact" class="btn btn-primary">Ask Us How</a>
+                                </div>
+                            </div>
+                            
+                            <div class="blog-meta">
+                                <span class="blog-date">November 15, 2025</span>
+                                <span class="blog-read-time">6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination" data-testid="pagination">
+                    <button class="pagination-btn prev" disabled>← Previous</button>
+                    <div class="pagination-numbers">
+                        <button class="pagination-num active">1</button>
+                        <button class="pagination-num">2</button>
+                    </div>
+                    <button class="pagination-btn next">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Get Free Business Tips</h2>
+                    <p>Subscribe to our newsletter for practical advice on growing your small business online. No spam, unsubscribe anytime.</p>
+                    <form class="newsletter-form" id="newsletterForm" data-testid="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="8" fill="#0066CC"/>
+                            <path d="M10 28V12h6c4 0 6 2 6 5s-2 5-6 5h-3v6h-3zm3-9h3c2 0 3-1 3-2s-1-2-3-2h-3v4z" fill="white"/>
+                            <path d="M24 28V12h3v13h7v3h-10z" fill="white"/>
+                        </svg>
+                        <span>Gace Builds</span>
+                    </a>
+                    <p>Professional web development for small businesses in the Philippines.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/services#business-websites">Business Websites</a></li>
+                        <li><a href="/services#landing-pages">Landing Pages</a></li>
+                        <li><a href="/services#seo">SEO Optimization</a></li>
+                        <li><a href="/services#content">Content Writing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms & Conditions</a></li>
+                        <li><a href="/disclaimer">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Gace Builds. All rights reserved.</p>
+                <p>Proudly serving small businesses across the Philippines.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
