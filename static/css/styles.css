@@ -1846,6 +1846,12 @@ p {
 /* ========================================
    Responsive Styles
    ======================================== */
+@media (max-width: 479px) {
+	.newsletter-form input[name="email"], .error-message, .success-message {
+		width: auto !important;
+	}
+}
+
 @media (min-width: 480px) {
 	.hero h1 {
 		font-size: 2rem;
