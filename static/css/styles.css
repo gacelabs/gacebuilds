@@ -1412,10 +1412,17 @@ p {
 	margin-bottom: 1.5rem;
 }
 
+.newsletter-content .g-recaptcha > div {
+	width: auto !important;
+	border: none;
+	margin-top: 0.75rem !important;
+}
+
 .newsletter-form {
 	display: flex;
 	flex-direction: column;
 	gap: 0.75rem;
+	justify-content: center;
 }
 
 .newsletter-form input {
@@ -1528,6 +1535,7 @@ p {
 	display: none;
 }
 
+
 .form-group.error input,
 .form-group.error select,
 .form-group.error textarea {
@@ -1543,6 +1551,13 @@ p {
 	padding: 2rem;
 	background: #F0FFF4;
 	border-radius: 12px;
+}
+
+.success-message {
+	font-size: 0.8125rem;
+	color: #009e55;
+	margin-top: 0.25rem;
+	display: none;
 }
 
 .success-icon {

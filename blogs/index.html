@@ -283,9 +283,16 @@
                     <h2>Get Free Business Tips</h2>
                     <p>Subscribe to our newsletter for practical advice on growing your small business online. No spam, unsubscribe anytime.</p>
                     <form class="newsletter-form" id="newsletterForm" data-testid="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
+						<input type="text" name="honeypot" style="display:none">
+						<input type="text" name="subscribe" value="Yes" style="display:none">
+						<div class="form-group">
+							<input type="email" name="email" required placeholder="juan@example.com" style="padding: 0.7rem 1rem; width: 17rem; text-align: center;"/>
+							<span class="error-message" id="emailError" style="width: 17rem;"></span>
+							<span class="success-message" id="emailSuccess" style="width: 17rem;"></span>
+						</div>
+						<button type="submit" class="btn btn-primary" style="height: 3rem;">Subscribe</button>
                     </form>
+					<div class="g-recaptcha" data-sitekey="6LcOM10sAAAAAJEMWOWiiNqsiQkrAmqRnfOZZQPG"></div>
                 </div>
             </div>
         </section>
@@ -352,6 +359,7 @@
     <script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	</script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- jQuery -->
     <script src="/static/js/jquery-3.7.1.min.js"></script>
     <script src="/static/js/main.js"></script>

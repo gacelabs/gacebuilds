@@ -273,9 +273,41 @@ $(document).ready(function() {
 
     // ========================================
     // Contact Form Validation
-    // ========================================
+	// ========================================
+	function showError($input, message, isNotCaptcha) {
+		if (isNotCaptcha == undefined) isNotCaptcha = false;
+		// Clear previous errors
+		$('form').removeClass('error');
+		$('.form-group').removeClass('error');
+		$('.error-message').stop().hide();
+		$('.success-message').stop().hide();
+
+		const $group = $input.closest('.form-group').length ? $input.closest('.form-group') : $input.parent();
+		if (isNotCaptcha == false) {
+			$group.addClass('error');
+		}
+		// console.log('Showing error for group:', $group, 'Message:', message);
+		$group.find('.error-message').text(message).show().delay(3000).fadeOut(1000, function() {
+			$group.removeClass('error');
+		});
+	}
+
+	function showSuccess($input, message) {
+		// Clear previous errors
+		$('form').removeClass('error');
+		$('.form-group').removeClass('error');
+		$('.error-message').stop().hide();
+		$('.success-message').stop().hide();
+
+		const $group = $input.closest('.form-group').length ? $input.closest('.form-group') : $input.parent();
+		$group.addClass('success');
+		// console.log('Showing success for group:', $group, 'Message:', message);
+		$group.find('.success-message').text(message).show().delay(3000).fadeOut(1000, function () {
+			$group.removeClass('success');
+		});
+	}
+
     const $contactForm = $('#contactForm');
-    
     if ($contactForm.length) {
         $contactForm.on('submit', function(e) {
             e.preventDefault();
@@ -371,74 +403,86 @@ $(document).ready(function() {
             }
         });
         
-        function showError($input, message) {
-            const $group = $input.closest('.form-group');
-            $group.addClass('error');
-            $group.find('.error-message').text(message).show();
-        }
-        
         // Clear error on input
         $contactForm.find('input, select, textarea').on('input change', function() {
             $(this).closest('.form-group').removeClass('error');
             $(this).closest('.form-group').find('.error-message').hide();
         });
-
-		async function submitQuote(e, successCallback, errorCallback) {
-			const form = e.target;
-			const formData = new FormData(form);
-			formData.append('apiKey', 'sf_k265gn8mmlkg2f2ji7ghi5m9');
-			const jsonObject = Object.fromEntries(formData.entries());
-			// console.log('Form Data:', Object.fromEntries(formData.entries()));
-
-			try {
-				const response = await fetch('https://api.staticforms.dev/submit', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(jsonObject),
-				});
-
-				const result = await response.json();
-				// console.log('API Response:', result);
-
-				if (result.success || (result.message && result.message.toLowerCase().indexOf('successfully') !== -1)) {
-					successCallback();
-					form.reset();
-				} else {
-					if (result.error && result.error.toLowerCase().indexOf('captcha verification failed') !== -1) {
-						$('.g-recaptcha > div').css({border: '1px solid #DC3545'});
-					}
-					errorCallback('Error: ' + result.error || 'Failed to submit the form. Please try again later.');
-				}
-			} catch (error) {
-				errorCallback('An error occurred while submitting the form. Please try again later.');
-			}
-		}
     }
 
     // ========================================
     // Newsletter Form
     // ========================================
     const $newsletterForm = $('#newsletterForm');
-    
-    if ($newsletterForm.length) {
+	if ($newsletterForm.length) {
         $newsletterForm.on('submit', function(e) {
-            e.preventDefault();
+			e.preventDefault();
+
+			$('.g-recaptcha > div').css({ border: 'none' });
             
             const $email = $(this).find('input[type="email"]');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             
             if (!emailRegex.test($email.val())) {
-                alert('Please enter a valid email address');
+				showError($email, 'Please enter a valid email address');
                 return;
             }
-            
-            // Show success (frontend only)
-            alert('Thank you for subscribing! We\'ll send you helpful tips for growing your business online.');
-            $email.val('');
+
+			const submitBtn = $(e.target).find('button[type="submit"]');
+			submitBtn.prop('disabled', true).text('Sending...');
+			submitQuote(e, function () {
+				submitBtn.prop('disabled', false).text('Subscribe');
+				showSuccess($email, 'Thank you for subscribing! We\'ll send you helpful tips for growing your business online.');
+				// Show success (frontend only)
+				$email.val('');
+			}, function (message) {
+				submitBtn.prop('disabled', false).text('Subscribe');
+				showError($email, message);
+				$('.g-recaptcha > div').css({ border: 'none' });
+			}, function (formData) {
+				$('#g-recaptcha-response').val(grecaptcha.getResponse());
+				formData.append('g-recaptcha-response', grecaptcha.getResponse());
+			});
         });
     }
+
+	async function submitQuote(e, successCallback, errorCallback, optionalCallback) {
+		const form = e.target;
+		const formData = new FormData(form);
+		formData.append('apiKey', 'sf_k265gn8mmlkg2f2ji7ghi5m9');
+
+		if (typeof optionalCallback === 'function') {
+			optionalCallback(formData);
+		}
+
+		const jsonObject = Object.fromEntries(formData.entries());
+		// console.log('Form Data:', Object.fromEntries(formData.entries()));
+
+		try {
+			const response = await fetch('https://api.staticforms.dev/submit', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(jsonObject),
+			});
+
+			const result = await response.json();
+			// console.log('API Response:', result);
+
+			if (result.success || (result.message && result.message.toLowerCase().indexOf('successfully') !== -1)) {
+				successCallback();
+				form.reset();
+			} else {
+				if (result.error && result.error.toLowerCase().indexOf('captcha verification failed') !== -1) {
+					$('.g-recaptcha > div').css({ border: '1px solid #DC3545' });
+				}
+				errorCallback('Error: ' + result.error || 'Failed to submit the form. Please try again later.');
+			}
+		} catch (error) {
+			errorCallback('An error occurred while submitting the form. Please try again later.');
+		}
+	}
 
     // ========================================
     // Blog Article Expand/Collapse
