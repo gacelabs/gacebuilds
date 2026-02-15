@@ -79,38 +79,39 @@
 							<input type="text" name="honeypot" style="display:none">
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required placeholder="Juan Dela Cruz" data-testid="contact-name">
+                                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" data-testid="contact-name">
                                 <span class="error-message" id="nameError"></span>
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required placeholder="juan@example.com" data-testid="contact-email">
+                                <input type="email" id="email" name="email" placeholder="juan@example.com" data-testid="contact-email">
                                 <span class="error-message" id="emailError"></span>
                             </div>
                             
                             <div class="form-group">
-                                <label for="phone">Phone Number</label>
+                                <label for="phone">Phone Number *</label>
                                 <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX" data-testid="contact-phone">
                                 <span class="error-message" id="phoneError"></span>
                             </div>
                             
                             <div class="form-group">
-                                <label for="business">Business Name</label>
+                                <label for="business">Business Name *</label>
                                 <input type="text" id="business" name="business" placeholder="Your Business Name" data-testid="contact-business">
+								<span class="error-message" id="businessError"></span>
                             </div>
                             
                             <div class="form-group">
-                                <label for="service">Service Interested In *</label>
-                                <select id="service" name="service" required data-testid="contact-service">
-                                    <option value="">Select a service</option>
+                                <label for="service">Service Interested In</label>
+                                <select id="service" name="service" data-testid="contact-service">
+                                    <!-- <option value="">Select a service</option> -->
+                                    <option value="not-sure">Other / Not Sure</option>
                                     <option value="business-website">Business Website</option>
                                     <option value="landing-page">Landing Page</option>
                                     <option value="seo">SEO Optimization</option>
                                     <!-- <option value="content">Content Writing</option> -->
                                     <option value="maintenance">Website Maintenance</option>
                                     <!-- <option value="training">Training & Support</option> -->
-                                    <option value="other">Other / Not Sure</option>
                                 </select>
                                 <span class="error-message" id="serviceError"></span>
                             </div>
@@ -118,24 +119,24 @@
                             <div class="form-group">
                                 <label for="budget">Estimated Budget</label>
                                 <select id="budget" name="budget" data-testid="contact-budget">
-                                    <option value="">Select budget range</option>
-                                    <option value="under-15k">Under ₱5,000</option>
-                                    <option value="15k-30k">₱5,000 - ₱30,000</option>
-                                    <option value="30k-50k">₱30,000 - ₱50,000</option>
-                                    <option value="50k-plus">₱50,000+</option>
+                                    <!-- <option value="">Select budget range</option> -->
                                     <option value="not-sure">Not sure yet</option>
+                                    <option value="under-15k">Under ₱5,000</option>
+                                    <option value="15k-30k">₱5,000 - ₱10,000</option>
+                                    <option value="30k-50k">₱10,000 - ₱15,000</option>
+                                    <option value="50k-plus">₱15,000+</option>
                                 </select>
                             </div>
                             
                             <div class="form-group full-width">
                                 <label for="message">Tell Us About Your Project *</label>
-                                <textarea id="message" name="message" rows="5" required placeholder="What does your business do? What do you want your website to achieve? Any specific features you need?" data-testid="contact-message"></textarea>
+                                <textarea id="message" name="message" rows="5" placeholder="What does your business do? What do you want your website to achieve? Any specific features you need?" data-testid="contact-message"></textarea>
                                 <span class="error-message" id="messageError"></span>
                             </div>
                             
                             <div class="form-group full-width">
                                 <label class="checkbox-label">
-                                    <input type="checkbox" name="privacy" required data-testid="contact-privacy">
+                                    <input type="checkbox" name="privacy" data-testid="contact-privacy">
                                     <span>I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> and consent to being contacted about my inquiry.</span>
                                 </label>
                                 <span class="error-message" id="privacyError"></span>
@@ -201,6 +202,7 @@
                                 <div class="info-content">
                                     <h4>Phone / Viber</h4>
                                     <p><a href="tel:+639172022385">+63 917 202 2385</a></p>
+                                    <p><a href="tel:+639953949847">+63 995 394 9847</a></p>
                                     <span>Mon-Sat, 9AM-6PM</span>
                                 </div>
                             </div>
@@ -220,7 +222,7 @@
                             </div>
                         </div>
                         
-                        <div class="info-card social-card">
+                        <!-- <div class="info-card social-card">
                             <h3>Follow Us</h3>
                             <div class="social-links">
                                 <a href="#" class="social-link" aria-label="Facebook" data-testid="social-facebook">
@@ -243,7 +245,7 @@
                                     </svg>
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                         
                         <div class="info-card faq-quick">
                             <h3>Quick Answers</h3>

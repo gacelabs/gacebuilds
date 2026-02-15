@@ -276,12 +276,6 @@ $(document).ready(function() {
 	// ========================================
 	function showError($input, message, isNotCaptcha) {
 		if (isNotCaptcha == undefined) isNotCaptcha = false;
-		// Clear previous errors
-		$('form').removeClass('error');
-		$('.form-group').removeClass('error');
-		$('.error-message').stop().hide();
-		$('.success-message').stop().hide();
-
 		const $group = $input.closest('.form-group').length ? $input.closest('.form-group') : $input.parent();
 		if (isNotCaptcha == false) {
 			$group.addClass('error');
@@ -293,12 +287,6 @@ $(document).ready(function() {
 	}
 
 	function showSuccess($input, message) {
-		// Clear previous errors
-		$('form').removeClass('error');
-		$('.form-group').removeClass('error');
-		$('.error-message').stop().hide();
-		$('.success-message').stop().hide();
-
 		const $group = $input.closest('.form-group').length ? $input.closest('.form-group') : $input.parent();
 		$group.addClass('success');
 		// console.log('Showing success for group:', $group, 'Message:', message);
@@ -350,7 +338,20 @@ $(document).ready(function() {
                     showError($phone, 'Please enter a valid phone number');
                     isValid = false;
                 }
-            }
+			} else {
+				showError($phone, 'Please enter a valid phone number');
+				isValid = false;
+			}
+
+			// Validate business
+			const $business = $('#business');
+			if (!$business.val().trim()) {
+				showError($business, 'Please enter your business name');
+				isValid = false;
+			} else if ($business.val().trim().length < 2) {
+				showError($business, 'Business name must be at least 2 characters');
+				isValid = false;
+			}
             
             // Validate service selection
             const $service = $('#service');
